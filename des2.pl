@@ -22,22 +22,15 @@ my $str = $ARGV[1];
 # encode
 if ($op =~ /encode/i && $str){
 
-    my $pLetter = undef;    # ultima letra
-    my $count = 0;          # ultima contagem
-    my @coded;              # resultado com entradas do tipo [<letra>, <contagem>]; array para manter a ordem correta
+    my $len;
 
-    # dividir a string em letras em um array
-    my @letters = split //, $str;
+    # 1) separar as sequencias com \0 usando um look-ahead
+    $str =~ s/(.)(?!\1)/$1\0/g;
 
-    # Fazer um loop por cada letra e fazer a contagem
-    while (@letters) {
-        $pLetter = shift(@letters) and $count++;
-        if (!@letters || $letters[0] ne $pLetter) {             # se a letra seguinte nao e' a mesma
-            push @coded, [$pLetter, $count] and $count = 0;     # salvar a contagem
-        }
-    }
-    print join "", map { join "", @$_ } @coded;
-    print "\n";
+    # 2) para cada sequencia separada por \0, colocar o caracter e o tamanho
+    $str =~ s/(.+?)\0/substr($1,0,1) . length($1)/eg;
+
+    print "$str\n";
 }
 # BONUS Easter Egg - contagem das letras :-)
 elsif ($op =~ /count/i && $str){
