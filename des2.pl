@@ -22,8 +22,6 @@ my $str = $ARGV[1];
 # encode
 if ($op =~ /encode/i && $str){
 
-    my $len;
-
     # 1) separar as sequencias com \0 usando um look-ahead
     $str =~ s/(.)(?!\1)/$1\0/g;
 
