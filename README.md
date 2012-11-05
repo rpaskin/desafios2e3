@@ -6,21 +6,21 @@ Exemplo: Dado uma string "AAABBBBCDDDDDDDDDDEEDDDD" como entrada, devolver uma s
 
 Decodificando:
 ```
-$ ./des2.pl A3B4C1D10E2D4
+./des2.pl A3B4C1D10E2D4
 AAABBBBCDDDDDDDDDDEEDDDD
 ```
 
 ou:
 
 ```
-$ ./des2.pl decode A3B4C1D10E2D4
+./des2.pl decode A3B4C1D10E2D4
 AAABBBBCDDDDDDDDDDEEDDDD
 ```
 
 Codificando:
 
 ```
-$ ./des2.pl encode AAABBBBCDDDDDDDDDDEEDDDD
+./des2.pl encode AAABBBBCDDDDDDDDDDEEDDDD
 A3B4C1D10E2D4
 ```
 
