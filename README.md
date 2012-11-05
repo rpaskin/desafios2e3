@@ -32,6 +32,18 @@ Codificando:
 A3B4C1D10E2D4
 ```
 
+Bonus -- contar todas letras:
+```
+./des2.pl count "AAAABCDDDDDDDDDEE"
+$VAR1 = {
+          'A' => 4,
+          'D' => 9,
+          'C' => 1,
+          'E' => 2,
+          'B' => 1
+        };
+```
+
 Desafio 3
 =========
 
