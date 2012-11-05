@@ -32,3 +32,29 @@ Codificando:
 A3B4C1D10E2D4
 ```
 
+Desafio 3
+=========
+
+Dado um conjunto de numeros, descobrir o subconjunto em que a soma dos elementos
+sao de maxima soma. 
+
+Exemplo: dado o conjunto de elementos [2, -4, 6, 8, -10, 100, -6, 5]
+
+O subconjunto de soma maxima e': [2, -4, 6, 8, -10, 100, -6, 5]
+
+Uso:
+```
+./des3.pl "2, -4, 6, 8, -10, 100, -6, 5"
+A maior soma e' 104, nas posicoes 2-5 [-4,6,8,-10]
+```
+
+Para mostrar os valores de todas combinacoes possiveis use o parametro "details":
+```
+./des3.pl "2, -4, 6, 8, -10, 100, -6, 5" details
+A maior soma e' 104, nas posicoes 2-5 [-4,6,8,-10]
+$VAR1 = {
+          '4-5' => 90,
+...
+          '1-3' => 10
+        };
+```
