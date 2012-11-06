@@ -57,13 +57,13 @@ O subconjunto de soma maxima e': [2, -4, 6, 8, -10, 100, -6, 5]
 Uso:
 ```
 ./des3.pl "2, -4, 6, 8, -10, 100, -6, 5"
-A maior soma e' 104, nas posicoes 2-5 [-4,6,8,-10]
+A maior soma e' 104, nas posicoes 2-5 [6,8,-10,100]
 ```
 
 Para mostrar os valores de todas combinacoes possiveis use o parametro "details":
 ```
 ./des3.pl "2, -4, 6, 8, -10, 100, -6, 5" details
-A maior soma e' 104, nas posicoes 2-5 [-4,6,8,-10]
+A maior soma e' 104, nas posicoes 2-5 [6,8,-10,100]
 $VAR1 = {
           '4-5' => 90,
 ...
