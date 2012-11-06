@@ -21,7 +21,8 @@
 use strict;
 
 my $str = $ARGV[0];
-    
+our $details = $ARGV[1] && $ARGV[1] eq 'details';
+ 
 my @numbers = split /\s*,\s*/, $str;
 
 my %allSums;
@@ -39,11 +40,11 @@ sub getPossibleSums {
 
     # Verificar a soma de todos elementos
     my $key = (0+$shifting).'-'.(@$list-1+$shifting);
-    $allSums{$key} = getListSum($list);
+    $allSums{$key} = getListSum($list, $shifting);
                                                                     # Esse e' o maior valor se:
     if (!$maxSum ||                                                 # ainda nao temos nenhum calculado, ou
         $allSums{$key} > $maxSum->[1] ||                            # esse valor e' maior do que o ultimo maior, ou
-        ($allSums{$key} == $maxSum->[1] && @$list < $maxSum->[2])){ # o valor e' igual, mas com menos elementos
+        ($allSums{$key} == $maxSum->[1] && @$list < @{$maxSum->[2]})){ # o valor e' igual, mas com menos elementos
 
         $maxSum = [$key, $allSums{$key}, \@$list];
     }
@@ -61,13 +62,17 @@ sub getPossibleSums {
 
 print "A maior soma e' $maxSum->[1], nas posicoes $maxSum->[0] [". join(",",@{$maxSum->[2]}) ."]\n";
 
-if ($ARGV[1] && $ARGV[1] eq 'details'){
+if ($details){
     warn Dumper(\%allSums); use Data::Dumper;   # E claro que como esse e' um hash nao ha order nas chaves
 }
 
 sub getListSum {
     my $list = shift;
+    my $shifting = shift;
     my $sum = 0;
-    map { $sum+=$_; } @$list;
+
+    print "== getListSum for (".(0+$shifting).'-'.(@$list-1+$shifting). ") == ". join(",",@$list) if $details;
+    map { print "= add $_=" if $details; $sum+=$_ } @$list;
+    print " T= $sum\n" if $details;
     return $sum;
 }
